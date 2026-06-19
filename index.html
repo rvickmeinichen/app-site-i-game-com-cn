@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 生活的另一页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f3f4f6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: #262626;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* hero — 开场短句 */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e6e8eb;
+            transition: box-shadow 0.2s;
+        }
+
+        .hero:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: #eef1f5;
+            border-radius: 40px;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            color: #5f6b7a;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.25rem;
+            border: 1px solid #dce0e4;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #1d1f21;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #434a54;
+            max-width: 70%;
+            border-left: 3px solid #bcc3ce;
+            padding-left: 1.25rem;
+        }
+
+        /* 承接段落卡片 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e6e8eb;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h2 {
+            font-weight: 450;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #1d1f21;
+            letter-spacing: -0.01em;
+            border-bottom: 1px solid #edf0f4;
+            padding-bottom: 0.5rem;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+            color: #3d4552;
+            font-size: 1.05rem;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 特点列表 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            background: #fafbfc;
+            border: 1px solid #e2e5e9;
+            border-radius: 18px;
+            padding: 1.4rem 1.2rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .feature-item:hover {
+            background: #ffffff;
+            border-color: #cbd0d6;
+        }
+
+        .feature-item .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #1f2933;
+            margin-bottom: 0.35rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #586472;
+            margin-bottom: 0;
+        }
+
+        /* 场景 + 引用 */
+        .scene-quote {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e0e4e9;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .scene-quote blockquote {
+            font-style: normal;
+            border-left: 4px solid #aeb8c5;
+            padding-left: 1.4rem;
+            margin: 0.8rem 0 0.2rem 0;
+            color: #48515e;
+            background: #f7f9fc;
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
+            font-size: 1.05rem;
+        }
+
+        .scene-quote .source {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #6f7b8a;
+            margin-top: 0.4rem;
+        }
+
+        /* 温和结尾 */
+        .gentle-footer {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            border: 1px solid #e2e6eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            margin-bottom: 2rem;
+        }
+
+        .gentle-footer p {
+            color: #3a4351;
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .gentle-footer a {
+            color: #2266aa;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dotted #b0c1d4;
+            transition: border-color 0.2s;
+        }
+
+        .gentle-footer a:hover {
+            border-bottom: 1px solid #2266aa;
+        }
+
+        .footer-note {
+            font-size: 0.9rem;
+            color: #77828f;
+            text-align: center;
+            padding: 1.5rem 0 0.5rem;
+            border-top: 1px solid #e2e5e9;
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                max-width: 100%;
+                padding-left: 1rem;
+                font-size: 1.1rem;
+            }
+            .card, .scene-quote, .gentle-footer {
+                padding: 1.5rem 1.2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 hero -->
+    <div class="hero">
+        <div class="hero-tag">⌛ 与游戏相伴的日常</div>
+        <h1>不只是按键与画面</h1>
+        <p>很多人把游戏当作逃离现实的入口，但我们更愿意把它看作另一种抵达——抵达更放松的自己、更默契的对话、更安静的陪伴。</p>
+    </div>
+
+    <!-- 承接段落 -->
+    <div class="card">
+        <h2>故事从这里开始</h2>
+        <p>每天下班后的二十分钟，或者周末午后的半个下午，打开一个游戏，像翻开一本旧杂志。不需要高潮迭起，只需要一种熟悉的节奏。有人喜欢在沙盒里种田，有人喜欢在解谜里绕远路，也有人只是听一段背景音乐就觉得很安稳。</p>
+        <p>游戏不是生活的对立面。它可以是厨房里的背景音、通勤时的短暂放空、和朋友连线时的那句“你还在啊”。这些碎片，拼出了我们和游戏之间真实的关系。而<a href="https://app-site-i-game.com.cn" style="color:#2266aa; text-decoration: none; border-bottom: 1px dotted #b0c1d4;">爱游戏</a>，恰好是很多人存放这些碎片的地方——安静，不喧哗，却有温度。</p>
+    </div>
+
+    <!-- 特点列表卡片 -->
+    <div class="card">
+        <h2>这些细节，让体验不同</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span class="emoji">🎮</span>
+                <h3>轻量选择</h3>
+                <p>不必纠结配置与时长，打开即玩，适合日常碎片时间。</p>
+            </div>
+            <div class="feature-item">
+                <span class="emoji">🧩</span>
+                <h3>品类混搭</h3>
+                <p>解谜、模拟、叙事、休闲……总有一种节奏贴合你当下的心情。</p>
+            </div>
+            <div class="feature-item">
+                <span class="emoji">🌱</span>
+                <h3>低负担体验</h3>
+                <p>没有强制任务、不逼肝，想停就停，随心而游。</p>
+            </div>
+            <div class="feature-item">
+                <span class="emoji">🤝</span>
+                <h3>安静共处</h3>
+                <p>单人沉浸或轻轻联机，不制造社交压力，只提供陪伴感。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 场景 + 引用风格段落 -->
+    <div class="scene-quote">
+        <h2 style="font-size:1.5rem; font-weight:450; margin-bottom:0.8rem; color:#1d1f21;">你也许有过这样的时刻</h2>
+        <blockquote>
+            “加班到十一点，回家不想说话，也不想睡。打开一个经营小游戏，整理仓库、种下明天的花。没有战斗，没有分数，就只是听着雨声——感觉这一天终于可以翻篇了。”
+        </blockquote>
+        <div class="source">——来自一位不愿透露姓名的普通玩家</div>
+        <p style="margin-top:1rem; color:#3d4552;">我们收集过很多类似的片段。没有惊天动地，只有某个瞬间，游戏刚好接住了你。这也是为什么，许多人愿意把<a href="https://app-site-i-game.com.cn" style="color:#2266aa; text-decoration: none; border-bottom: 1px dotted #b0c1d4;">爱游戏</a>当作一个可以随时回去的角落——它不追问你为何而来，只陪你坐一会儿。</p>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="gentle-footer">
+        <p>游戏不一定要有用，但它可以成为一种陪伴的方式。就像书架上那本经常翻到的书，不一定每次都要读完，只要它在，就多了一点熟悉感。</p>
+        <p>很多时候，我们需要的不是更刺激的冒险，而是一个放松的入口。如果你也这样想，或许可以试试在某个安静的时刻，去 <a href="https://app-site-i-game.com.cn">爱游戏</a> 里随便逛逛。不带着目标，不抱着期待，只是看看有没有什么让你觉得“嗯，这个好像不错”。</p>
+        <div class="footer-note">
+            © 爱游戏 · 一种温和的游戏陪伴方式
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

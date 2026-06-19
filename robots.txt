@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rvickmeinichen.github.io/app-site-i-game-com-cn/sitemap.xml
