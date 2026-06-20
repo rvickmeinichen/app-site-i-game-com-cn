@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>专题 · 德州扑克 | 从规则到策略</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f0f2f5;
+      color: #1e2a3a;
+      line-height: 1.7;
+      padding: 2rem 1.5rem;
+    }
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* 首页横幅 — 杂志开篇风格 */
+    .hero {
+      background: linear-gradient(145deg, #f7f9fc 0%, #eaeef5 100%);
+      border-radius: 28px;
+      padding: 3.2rem 2.8rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(200, 215, 235, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1f2c3c;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .hero h1 small {
+      font-size: 1rem;
+      font-weight: 350;
+      color: #5b6f84;
+      margin-left: 1rem;
+      letter-spacing: 0.3px;
+    }
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #3e5268;
+      max-width: 70%;
+      line-height: 1.6;
+      border-left: 3px solid #8fa3bb;
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 2rem 1.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero .sub { max-width: 100%; font-size: 1rem; }
+    }
+
+    /* 三段式背景说明 + 特点卡片 */
+    .intro-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      border: 1px solid #e6eaf0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.01);
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 480;
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid #eaedf2;
+      padding-bottom: 0.55rem;
+      margin-bottom: 1rem;
+      color: #1f2b3b;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card h2 i {
+      font-style: normal;
+      background: #dce4ee;
+      color: #1f2b3b;
+      font-size: 0.9rem;
+      border-radius: 30px;
+      padding: 0 0.8rem;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+    .card p {
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+    }
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+    .card .highlight {
+      background: #f2f6fb;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #1f3a56;
+    }
+
+    /* 页尾访问提示 — 自然融入 */
+    .visit-note {
+      background: #f4f7fb;
+      border-radius: 28px;
+      padding: 2.2rem 2.4rem;
+      margin-top: 2.2rem;
+      border: 1px solid #dfe5ed;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .visit-note p {
+      font-size: 1rem;
+      color: #2c3e53;
+      margin-bottom: 0.4rem;
+    }
+    .visit-note p:last-child {
+      margin-bottom: 0;
+    }
+    .visit-note a {
+      color: #1f4b7a;
+      text-decoration: none;
+      font-weight: 480;
+      border-bottom: 1px dotted #8faac5;
+      transition: border-color 0.15s;
+    }
+    .visit-note a:hover {
+      border-bottom: 1px solid #1f4b7a;
+    }
+
+    /* 辅助排版 */
+    .spacer {
+      height: 0.25rem;
+    }
+    .inline-tag {
+      background: #eef2f7;
+      border-radius: 30px;
+      padding: 0.2rem 1rem;
+      font-size: 0.8rem;
+      color: #2b4058;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #d4dde8, transparent);
+      margin: 1.5rem 0;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 1rem; }
+      .card { padding: 1.5rem; }
+      .visit-note { padding: 1.8rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 杂志式横幅 -->
+  <div class="hero">
+    <h1>德州扑克 <small>从规则到判断 · 专题</small></h1>
+    <div class="sub">不急于告诉你“是什么”，先聊聊为什么这个牌桌值得你花五分钟了解。</div>
+  </div>
+
+  <!-- 三段自然介绍：背景说明 / 特点 / 场景（杂志卡片结构） -->
+  <div class="intro-grid">
+
+    <!-- 卡片1：背景说明 + 网站用途快速识别 -->
+    <div class="card">
+      <h2>▎ 当有人提到 <i>德州扑克</i> …</h2>
+      <p>你可能会想到电影里的高额筹码、冷峻的读心表情，或者朋友聚会时那张绿色绒布桌。但如果你打开一个页面，仅仅看到“德州扑克”四个字，很可能想确认：<strong>这里到底讲规则，还是策略，或者只是一个在线娱乐入口？</strong></p>
+      <p><span class="highlight">cn-poker-dezhou.com</span> 正是这样一个明确定位的站点——它围绕德州扑克的核心玩法与逻辑展开，没有花哨的噱头，只有从牌型、下注圈到位置概念的基础梳理。无论你是刚摸牌的新手，还是想回顾框架的业余玩家，都能在这里找到清晰的叙述。</p>
+    </div>
+
+    <!-- 卡片2：从快速识别出发，介绍特点 -->
+    <div class="card">
+      <h2>▎ 快速识别用途 · 结构特点</h2>
+      <p>很多棋牌类网站常常把“下载”“注册”放在最显眼的位置，但这里不同。进入网站后，你会先看到<strong>德州扑克</strong>本身——它的术语、手牌排名、行动顺序以及常见的翻前翻后思路。页面不堆砌广告，而是用简洁的章节告诉你：<em>盲注结构怎么理解？同花和顺子哪个更难凑？位置为什么重要？</em></p>
+      <p>这种“先内容，后交互”的设计，让访问者在三分钟内就能判断这个网站是否对自己有帮助。毕竟，如果连 Basic rules 都讲不清楚，其他功能也就失去了意义。</p>
+      <div style="margin-top: 0.8rem;">
+        <span class="inline-tag">📋 手牌图表</span>
+        <span class="inline-tag">🧩 概率简表</span>
+        <span class="inline-tag">📌 位置指南</span>
+      </div>
+    </div>
+
+    <!-- 卡片3：场景 + 一点点叙述感 -->
+    <div class="card">
+      <h2>▎ 在牌桌之外，读懂框架</h2>
+      <p>有一个场景很常见：你被朋友拉进一个德州扑克局，只知道“同花顺最大”，但翻牌后完全不知道该怎么下注。这时候，你需要的不是一个复杂的 GTO 计算器，而是一份诚实的基础地图。——这就是这类专题介绍页想提供的起点。</p>
+      <p>网站没有用“包赢秘籍”之类的话术，它只是把牌型强弱、底池赔率的概念、以及常见的翻前起手牌选择放在你面前。你花十分钟读一遍，再上桌时至少能听懂别人在说“c-bet”还是“check-raise”。</p>
+      <p style="font-size: 0.9rem; color: #4f667f; margin-top: 0.8rem;">—— 某种意义上，<strong>识别一个网站是否靠谱</strong>，也像在翻牌前做判断：看它的结构是否清晰，信息是否有逻辑，而不是一味用弹窗催你行动。</p>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 — 自然嵌入链接，无诱导词汇 -->
+  <div class="visit-note">
+    <p>如果你想从基础开始梳理，或者只是想回顾一下翻前翻后的行动逻辑，可以直接去看看 <a href="https://cn-poker-dezhou.com">德州扑克</a> 这个站点——它的内容组织方式比较直白，没有多余的跳转干扰。</p>
+    <p style="margin-top: 0.6rem; color: #405a75; font-size: 0.9rem;">另外，不论你是在手机还是电脑上打开，页面都做了基本适配，阅读体验还算舒服。</p>
+  </div>
+
+  <!-- 简短的分隔 + 极简脚注（只用来收尾，不堆信息） -->
+  <hr>
+  <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #687e98; padding: 0.5rem 0 1rem;">
+    <span>专题风格 · 背景说明</span>
+    <span>没有夸张，只有框架</span>
+  </div>
+
+</div>
+</body>
+</html>
