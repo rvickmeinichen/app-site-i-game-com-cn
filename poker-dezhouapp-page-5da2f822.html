@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德州扑克 · 简明产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background: #fafaf9;
+            color: #1e1e1e;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3.2rem 1.8rem 4.8rem;
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+            margin-bottom: 2.2rem;
+            color: #1e1e1e;
+            border-bottom: 2px solid #e5e5e4;
+            padding-bottom: 0.8rem;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin-top: 2.8rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+            letter-spacing: 0.01em;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-top: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #3a3a3a;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2e2e2e;
+        }
+
+        .lead {
+            font-size: 1.12rem;
+            color: #3b3b3b;
+            background: #f3f2f0;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 3px solid #b7b4af;
+        }
+
+        ul {
+            padding-left: 1.4rem;
+            margin-bottom: 1.4rem;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            position: relative;
+            padding-left: 0.8rem;
+            font-size: 0.98rem;
+            color: #2c2c2c;
+        }
+
+        li::before {
+            content: "—";
+            position: absolute;
+            left: -0.4rem;
+            color: #9a9894;
+        }
+
+        .highlight-card {
+            background: #ffffff;
+            border: 1px solid #e4e3e0;
+            border-radius: 12px;
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0 1.8rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .highlight-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .note {
+            background: #f0efec;
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            font-size: 0.92rem;
+            color: #3b3b3b;
+            margin-top: 1.8rem;
+            border: 1px solid #dedcd7;
+        }
+
+        .note strong {
+            font-weight: 500;
+        }
+
+        a {
+            color: #2c5a9c;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 400;
+        }
+
+        a:hover {
+            border-bottom-color: #2c5a9c;
+            color: #1b3f6e;
+        }
+
+        .faq-item {
+            margin-top: 1.2rem;
+            padding-left: 0.2rem;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            color: #1e1e1e;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-answer {
+            color: #4a4a4a;
+            font-size: 0.96rem;
+            margin-left: 0.2rem;
+        }
+
+        .inline-highlight {
+            background: #f2f1ef;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-weight: 400;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e5e4e2;
+            margin: 2.4rem 0 2.2rem;
+        }
+
+        .scenario-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.2rem 0 1.6rem;
+        }
+
+        .scenario-item {
+            flex: 1 1 180px;
+            background: #f8f7f5;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #eae9e6;
+        }
+
+        .scenario-item p {
+            margin-bottom: 0.2rem;
+            font-size: 0.92rem;
+        }
+
+        .scenario-item .label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.3rem;
+            color: #1e1e1e;
+        }
+
+        @media (max-width: 500px) {
+            .page {
+                padding: 2rem 1.2rem 3.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .lead {
+                font-size: 1rem;
+                padding: 1rem 1.2rem;
+            }
+            .highlight-card {
+                padding: 1.2rem 1.2rem;
+            }
+            .scenario-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>德州扑克 · 用途识别与说明</h1>
+
+        <p class="lead">如果你曾搜索「德州扑克」并快速打开一个页面，通常希望立刻判断这个网站是否提供你需要的游戏、规则或工具。本文档直接说明本网站的核心定位与使用场景，无冗余修饰。</p>
+
+        <h2>网站摘要</h2>
+        <p>
+            <a href="https://poker-dezhouapp.com">德州扑克</a> 是一个专注于德州扑克游戏体验的轻量化平台，提供在线对局、牌局模拟与基础策略参考。不涉及真实货币交易，也无诱导充值或承诺收益的内容。网站的设计逻辑是：让玩家在低门槛下练习手牌判断、位置意识与下注节奏，适合从入门到进阶的不同熟练度用户。
+        </p>
+        <p>
+            整个页面没有弹窗广告或复杂注册流程，进入后即可快速开始牌局或浏览牌谱回放。网站不对胜负概率做任何保证，所有对局结果均由随机算法与玩家决策共同决定。
+        </p>
+
+        <div class="highlight-card">
+            <h3 style="margin-top: 0; font-weight: 500;">亮点速览</h3>
+            <ul>
+                <li>无现金 / 无筹码充值，纯练习与娱乐环境</li>
+                <li>牌局历史可导出，便于复盘与成长</li>
+                <li>基础赔率与手牌强度即时提示（非教学，仅辅助参考）</li>
+                <li>支持自定义座位人数与盲注结构，模拟实战节奏</li>
+                <li>桌面端与移动端布局自适应，无需额外下载</li>
+            </ul>
+        </div>
+
+        <h2>使用建议</h2>
+        <p>
+            如果你希望系统提升对德州扑克的理解，可以每周安排 3–5 次短对局（每次 20–30 分钟），重点关注翻牌前的手牌选择与翻后的下注逻辑。网站不提供“必胜秘诀”或“盈利策略”，所有决策需要玩家自行判断。建议结合牌谱记录，逐步建立自己的决策框架。
+        </p>
+        <p>
+            对于团队或朋友之间的非正式交流，也可以利用平台创建私人牌桌，约定相同的盲注规则，方便讨论与练习。请留意：平台不会保存个人信息或聊天记录，每局结束后数据会在服务器保留 48 小时后自动清理。
+        </p>
+
+        <h2>适用场景</h2>
+        <div class="scenario-grid">
+            <div class="scenario-item">
+                <span class="label">新手熟悉规则</span>
+                <p>快速了解位置、下注轮次与手牌组合的交互方式</p>
+            </div>
+            <div class="scenario-item">
+                <span class="label">进阶玩家测试</span>
+                <p>验证特定范围或下注尺寸在模拟局中的表现</p>
+            </div>
+            <div class="scenario-item">
+                <span class="label">内容创作者参考</span>
+                <p>截取牌谱或对局画面用于教学素材（注明来源即可）</p>
+            </div>
+            <div class="scenario-item">
+                <span class="label">策略讨论基础</span>
+                <p>以同一手牌记录作为讨论起点，减少偏差</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>FAQ 摘要</h2>
+        <div class="faq-item">
+            <div class="faq-question">需要注册账号吗？</div>
+            <div class="faq-answer">不需要。网站默认匿名进入，仅需设置一个临时昵称即可开始对局。无账户系统，也不收集邮箱或手机号。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">是否收费？</div>
+            <div class="faq-answer">完全免费。所有功能均无付费墙，未来也不计划引入订阅或道具收费模式。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">可以用于商业或直播吗？</div>
+            <div class="faq-answer">个人或非大规模商业直播可以自由使用，无需事先授权。但不得将网站界面或牌局数据用于二次销售或直接竞争的聚合平台。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">网站支持哪些浏览器？</div>
+            <div class="faq-answer">建议使用最新版本的 Chrome、Edge 或 Safari，火狐浏览器部分牌桌动画可能存在轻微延迟，不影响核心功能。</div>
+        </div>
+
+        <div class="note">
+            <strong>访问说明：</strong> 本网站由独立开发者维护，不定期更新。服务器位于亚太地区，国内访问可能偶有延迟，通常不影响牌局同步。关于更详细的使用方式，可直接前往 <a href="https://poker-dezhouapp.com">德州扑克</a> 页面进行体验。任何关于规则或功能的疑问，请通过网站底部的联系表单提交，一般在一个工作日内回复。<br>
+            <span style="display:block; margin-top:0.6rem; color:#5e5e5e;">版本：2025-04 · 页面内容仅供参考，不构成任何形式的建议或保证。</span>
+        </div>
+    </div>
+</body>
+</html>
